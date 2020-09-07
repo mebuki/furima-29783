@@ -79,12 +79,12 @@ Things you may want to cover:
 
 | Column      | Type     | Options       |
 | ------------| -------- | ------------- |
-| post_number | string   | null: false   |
-| prefecture  | string   | null: false   |
+| post_number | integer  | null: false   |
+| prefecture  | integer  | null: false   |
 | city        | string   | null: false   |
 | street      | string   | null: false   |
-| building    | string   | null: false   |
-| tell_number | string   | null: false   |
+| building    | string   |               |
+| tell_number | integer  | null: false   |
 
 ### Association
 
