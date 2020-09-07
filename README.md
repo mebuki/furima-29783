@@ -76,14 +76,14 @@ Things you may want to cover:
 
 ## address テーブル
 
-| Column      | Type     | Options       |
-| ------------| -------- | ------------- |
-| post_number | integer  | null: false   |
-| prefecture  | integer  | null: false   |
-| city        | string   | null: false   |
-| street      | string   | null: false   |
-| building    | string   |               |
-| tell_number | integer  | null: false   |
+| Column        | Type     | Options       |
+| ------------- | -------- | ------------- |
+| post_number   | string   | null: false   |
+| prefecture_id | integer  | null: false   |
+| city          | string   | null: false   |
+| street        | string   | null: false   |
+| building      | string   |               |
+| tell_number   | string   | null: false   |
 
 ### Association
 
