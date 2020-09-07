@@ -45,19 +45,22 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| image    | string | null: false |
-| item_name| string | null: false |
-| item_info| string | null: false |
-| category | string | null: false |
-| status   | string | null: false |
-| price    | string | null: false |
+| Column   | Type    | Options     |
+| -------- | ------- | ----------- |
+| image    | string  | null: false |
+| name     | string  | null: false |
+| info     | string  | null: false |
+| category | integer | null: false |
+| status   | integer | null: false |
+| fee      | integer | null: false |
+| place    | integer | null: false |
+| days     | integer | null: false |
+| price    | integer | null: false |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :shop
+- has_one :shop
 
 ## shops テーブル
 
