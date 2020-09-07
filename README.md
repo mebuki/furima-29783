@@ -64,11 +64,10 @@ Things you may want to cover:
 
 ## shops テーブル
 
-| Column        | Type     | Options     |
-| --------------| -------- | ----------- |
-| card_number   | string   | null: false |
-| card_date     | string   | null: false |
-| security_code | string   | null: false |
+| Column    | Type       | Options                        |
+| ----------| ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
 ### Association
 
