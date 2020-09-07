@@ -45,16 +45,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column      | Type    | Options     |
-| ----------- | ------- | ----------- |
-| name        | string  | null: false |
-| info        | text    | null: false |
-| category_id | integer | null: false |
-| status_id   | integer | null: false |
-| fee_id      | integer | null: false |
-| place_id    | integer | null: false |
-| days_id     | integer | null: false |
-| price       | integer | null: false |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| name        | string     | null: false                    |
+| info        | text       | null: false                    |
+| category_id | integer    | null: false                    |
+| status_id   | integer    | null: false                    |
+| fee_id      | integer    | null: false                    |
+| place_id    | integer    | null: false                    |
+| days_id     | integer    | null: false                    |
+| price       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -76,14 +77,15 @@ Things you may want to cover:
 
 ## address テーブル
 
-| Column        | Type     | Options       |
-| ------------- | -------- | ------------- |
-| post_number   | string   | null: false   |
-| prefecture_id | integer  | null: false   |
-| city          | string   | null: false   |
-| street        | string   | null: false   |
-| building      | string   |               |
-| tell_number   | string   | null: false   |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_number   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| street        | string     | null: false                    |
+| building      | string     |                                |
+| tell_number   | string     | null: false                    |
+| shop          | references | null: false, foreign_key: true |
 
 ### Association
 
