@@ -45,17 +45,16 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| image    | string  | null: false |
-| name     | string  | null: false |
-| info     | string  | null: false |
-| category | integer | null: false |
-| status   | integer | null: false |
-| fee      | integer | null: false |
-| place    | integer | null: false |
-| days     | integer | null: false |
-| price    | integer | null: false |
+| Column      | Type    | Options     |
+| ----------- | ------- | ----------- |
+| name        | string  | null: false |
+| info        | text    | null: false |
+| category_id | integer | null: false |
+| status_id   | integer | null: false |
+| fee_id      | integer | null: false |
+| place_id    | integer | null: false |
+| days_id     | integer | null: false |
+| price       | integer | null: false |
 
 ### Association
 
