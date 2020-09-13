@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -13,8 +13,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # binding.pry
-    # item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -36,6 +34,14 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
   
