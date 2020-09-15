@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("pk_test_f2ddc5a87663445295836d80");
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -13,6 +13,7 @@ const pay = () => {
       exp_month: formData.get("exp_month"),
       exp_year: `20${formData.get("exp_year")}`,
     };
+
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
@@ -23,7 +24,7 @@ const pay = () => {
       document.getElementById("card-number").removeAttribute("name");
       document.getElementById("card-cvc").removeAttribute("name");
       document.getElementById("card-exp-month").removeAttribute("name");
-      document.getElementById("card-exp_year").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");
  
       document.getElementById("charge-form").submit();
       document.getElementById("charge-form").reset();
