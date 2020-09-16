@@ -1,12 +1,16 @@
 class OrdersController < ApplicationController
+before_action :authenticate_user!
+before_action :set_item
+before_action :user_order
+before_action :user_ordered
 
-  def index
-    @item = Item.find(params[:item_id])
+  def index # @tweet.comments.each do |comment| # @item.order(商品に紐づく購入の情報)
+    @order = OrderAddress.new
   end
 
   def create
-    @order = OrderAddress.new(order_params)
-    @item = Item.find(params[:item_id])
+     # params, item?
+    @order = OrderAddress.new(order_params)#(post_number: params[:order_address][:post_number], ..... , item_id: params[:item_id])
     if @order.valid?
       pay_item
       @order.save
@@ -17,11 +21,9 @@ class OrdersController < ApplicationController
   end
 
   private
-  # parameter
-  # { order_address => { post_numer => "", ....... } }
 
   def order_params
-    params.permit(:item_id, :post_number, :place_id, :city, :street, :building, :tell_number, :token).merge(user_id: current_user.id)
+    params.require(:order_address).permit(:post_number, :place_id, :city, :street, :building, :tell_number, :token).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
   def pay_item
@@ -32,6 +34,22 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def user_order
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
+  def user_ordered
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 
 end

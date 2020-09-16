@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_new_user_session, except: [:index, :show]
 
 
   def index
@@ -22,10 +23,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    if user_signed_in?
-    else
-      redirect_to new_user_session_path
-    end
   end
 
   def create
@@ -53,6 +50,10 @@ class ItemsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_new_user_session
+    redirect_to new_user_session_path unless user_signed_in?    
   end
 
 end
