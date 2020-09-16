@@ -6,7 +6,7 @@ class OrderAddress
   with_options presence: true do
     validates :post_number, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :place_id, numericality: { other_than: 0 }
-    validates :user_id, :item_id, :city, :street
+    validates :user_id, :item_id, :city, :street, :token
     validates :tell_number, format: { with: /\A\d{,11}\z/ }
   end
 
