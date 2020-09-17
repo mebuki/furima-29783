@@ -1,5 +1,4 @@
 class OrderAddress
-
   include ActiveModel::Model
   attr_accessor :token, :user_id, :item_id, :post_number, :place_id, :city, :street, :building, :tell_number
 
@@ -12,7 +11,6 @@ class OrderAddress
 
   def save
     @order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(post_number: post_number, place_id: place_id, city: city, street: street, building: building, tell_number: tell_number, order_id: @order.id )
+    Address.create(post_number: post_number, place_id: place_id, city: city, street: street, building: building, tell_number: tell_number, order_id: @order.id)
   end
-
 end

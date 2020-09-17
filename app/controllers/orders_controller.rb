@@ -1,20 +1,20 @@
 class OrdersController < ApplicationController
-before_action :authenticate_user!
-before_action :set_item
-before_action :user_order
-before_action :user_ordered
+  before_action :authenticate_user!
+  before_action :set_item
+  before_action :user_order
+  before_action :user_ordered
 
   def index # @tweet.comments.each do |comment| # @item.order(商品に紐づく購入の情報)
     @order = OrderAddress.new
   end
 
   def create
-     # params, item?
-    @order = OrderAddress.new(order_params)#(post_number: params[:order_address][:post_number], ..... , item_id: params[:item_id])
+    # params, item?
+    @order = OrderAddress.new(order_params) # (post_number: params[:order_address][:post_number], ..... , item_id: params[:item_id])
     if @order.valid?
       pay_item
       @order.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
@@ -28,11 +28,11 @@ before_action :user_ordered
 
   def pay_item
     item_price = Item.find(params[:item_id])
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: item_price[:price],
       card: order_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 
@@ -41,15 +41,10 @@ before_action :user_ordered
   end
 
   def user_order
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id
   end
 
   def user_ordered
-    if @item.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.order.present?
   end
-
 end
