@@ -62,7 +62,7 @@ Things you may want to cover:
 - belongs_to :user
 - has_one :shop
 
-## shops テーブル
+## order テーブル
 
 | Column    | Type       | Options                        |
 | ----------| ---------- | ------------------------------ |
@@ -80,7 +80,7 @@ Things you may want to cover:
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post_number   | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
+| place_id      | integer    | null: false                    |
 | city          | string     | null: false                    |
 | street        | string     | null: false                    |
 | building      | string     |                                |
